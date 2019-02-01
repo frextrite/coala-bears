@@ -165,6 +165,7 @@ env:
 
 before_install:
   - gimme stable
+  - go version
   - nvm install 6.10.2
   # Remove Ruby directive from Gemfile as this image has 2.2.5
   - sed -i '/^ruby/d' Gemfile
