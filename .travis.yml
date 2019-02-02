@@ -164,6 +164,8 @@ env:
     - PATH="$HOME/.local/bin:/opt/cabal/$CABAL_VERSION/bin:$PATH:$TRAVIS_BUILD_DIR/node_modules/.bin:$TRAVIS_BUILD_DIR/vendor/bin:$HOME/.cabal/bin:$HOME/infer-linux64-v$INFER_VERSION/infer/bin:$HOME/.local/tailor/tailor-latest/bin:$HOME/.luarocks/bin"
 
 before_install:
+  - gimme stable
+  - go version
   - nvm install 6.10.2
   # Remove Ruby directive from Gemfile as this image has 2.2.5
   - sed -i '/^ruby/d' Gemfile
@@ -173,6 +175,9 @@ before_install:
   - .ci/deps.r.sh
   # .ci/deps.opam.sh
   - .ci/deps.java.sh
+  - go version
+  - echo $GOPATH
+  - echo $GOROOT
   # https://github.com/coala/coala/issues/3183
   - cp requirements.txt requirements.orig
   - printf '%s\n%s\n%s\n'
