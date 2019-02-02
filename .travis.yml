@@ -166,7 +166,7 @@ env:
 before_install:
   - gimme stable > set_go_root.sh
   - chmod +x set_go_root.sh
-  - ./set_go_root.sh
+  - source set_go_root.sh
   - go version
   - nvm install 6.10.2
   # Remove Ruby directive from Gemfile as this image has 2.2.5
