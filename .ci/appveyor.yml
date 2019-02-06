@@ -10,10 +10,12 @@ environment:
     - PYTHON: "C:\\Python34"
       PYTHON_VERSION: "3.4.4"
       PYTHON_ARCH: "32"
+      ruby_version: "24"
 
     - PYTHON: "C:\\Python34-x64"
       PYTHON_VERSION: "3.4.4"
       PYTHON_ARCH: "64"
+      ruby_version: "24-x64"
 
 cache:
   - "C:\\pip_cache"
@@ -46,6 +48,11 @@ install:
   - ps: "Install-Product node ''"  # Use latest node v5.x.x
   - "npm config set loglevel warn"
   - "npm install"
+  - "SET PATH=node_modules\\.bin;%PATH%"
+
+  # Commands for Ruby
+  - "SET PATH=C:\\Ruby%ruby_version%\\bin;%PATH%"
+  - "bundle install"
 
 build: false  # Not a C# project, build stuff at the test step instead.
 
